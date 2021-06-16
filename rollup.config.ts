@@ -2,30 +2,15 @@ import typescript from '@rollup/plugin-typescript';
 
 export default [
   {
-    input: 'src/ReactPinCodeInput.tsx',
+    input: 'src/ReactStories.tsx',
     output: [
       {
-        name: 'ReactPinCodeInput',
+        name: 'ReactStories',
         dir: 'dist',
         format: 'cjs',
       },
       {
-        file: 'dist/ReactPinCodeInput.esm.js',
-        format: 'esm',
-      },
-    ],
-    plugins: [typescript({ include: ['./src/**/*.tsx'] })],
-  },
-  {
-    input: 'src/ReactPinCodeInputWithPropTypes.tsx',
-    output: [
-      {
-        name: 'ReactPinCodeInputWithPropTypes',
-        dir: 'dist',
-        format: 'cjs',
-      },
-      {
-        file: 'dist/ReactPinCodeInputWithPropTypes.esm.js',
+        file: 'dist/ReactStories.esm.js',
         format: 'esm',
       },
     ],
