@@ -6,7 +6,7 @@ const jestConfig: Config.InitialOptions = {
   roots: ['<rootDir>/src', '<rootDir>/test'],
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts', '!src/index.ts'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setupTests.ts'],
-  testRunner: 'jest-circus/runner',
+  testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/**/*.{spec,test}.{js,jsx,ts,tsx}'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   modulePaths: [],
