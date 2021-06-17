@@ -1,7 +1,7 @@
 {
   "name": "@zenet/react-stories",
   "description": "A react component to easily create stories like instagram, whatsapp...",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "react",
     "component",
