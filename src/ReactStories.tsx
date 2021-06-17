@@ -128,7 +128,7 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
           maxWidth: '100%',
           width: '100%',
           position: 'absolute',
-          paddingTop: '20px',
+          padding: '15px',
           alignSelf: 'center',
           zIndex: 99,
           ...storyProgressContainerStyles,
