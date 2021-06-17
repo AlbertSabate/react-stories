@@ -1,13 +1,19 @@
-import { useContext, ReactNode } from 'react';
+import { CSSProperties, ReactNode, useContext } from 'react';
 import { StoriesContext } from './Context';
 
 export interface ProgressWrapperProps {
+  storyProgressWrapperStyles?: CSSProperties;
   children: ReactNode;
   width: number;
   paused: boolean;
 }
 
-const ProgressWrapper = ({ children, width, paused }: ProgressWrapperProps) => (
+const ProgressWrapper = ({
+  children,
+  width,
+  paused,
+  storyProgressWrapperStyles,
+}: ProgressWrapperProps) => (
   <div
     style={{
       height: 2,
@@ -18,6 +24,7 @@ const ProgressWrapper = ({ children, width, paused }: ProgressWrapperProps) => (
       transition: 'opacity 400ms ease-in-out',
       width: `${width * 100}%`,
       opacity: paused ? 0 : 1,
+      ...storyProgressWrapperStyles,
     }}
   >
     {children}
@@ -25,12 +32,20 @@ const ProgressWrapper = ({ children, width, paused }: ProgressWrapperProps) => (
 );
 
 export interface ProgressProps {
+  storyProgressWrapperStyles?: CSSProperties;
+  storyProgressStyles?: CSSProperties;
   width: number;
   active: number;
   count: number;
 }
 
-export const Progress = (props: ProgressProps): JSX.Element => {
+export const Progress = ({
+  count,
+  width,
+  active,
+  storyProgressStyles,
+  storyProgressWrapperStyles,
+}: ProgressProps): JSX.Element => {
   const { paused } = useContext(StoriesContext);
 
   const getProgressStyle = ({ active }: { active: number }) => {
@@ -38,15 +53,18 @@ export const Progress = (props: ProgressProps): JSX.Element => {
       case 2:
         return { width: '100%' };
       case 1:
-        return { transform: `scaleX(${props.count / 100})` };
+        return { transform: `scaleX(${count / 100})` };
       default:
         return { width: 0 };
     }
   };
 
-  const { width, active } = props;
   return (
-    <ProgressWrapper width={width} paused={paused}>
+    <ProgressWrapper
+      width={width}
+      paused={paused}
+      storyProgressWrapperStyles={storyProgressWrapperStyles}
+    >
       <div
         style={{
           background: '#fff',
@@ -60,6 +78,7 @@ export const Progress = (props: ProgressProps): JSX.Element => {
           WebkitPerspective: 1000,
           MozPerspective: 1000,
           perspective: 1000,
+          ...storyProgressStyles,
           ...getProgressStyle({ active }),
         }}
       />

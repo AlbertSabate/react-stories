@@ -1,7 +1,7 @@
 {
   "name": "@zenet/react-stories",
   "description": "A react component to easily create stories like instagram, whatsapp...",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "react",
     "component",
@@ -83,12 +83,12 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rollup": "^2.51.2",
+    "rollup": "^2.52.1",
     "size-limit": "^4.12.0",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.3"
   },
   "peerDependencies": {
     "react": ">=17.0",

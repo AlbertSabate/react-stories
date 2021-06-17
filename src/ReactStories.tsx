@@ -7,6 +7,9 @@ export { StoriesContext, StoriesProvider, Story };
 export interface ReactStoriesProps {
   stories: Array<Story>;
   storyContainerStyles?: CSSProperties;
+  storyProgressContainerStyles?: CSSProperties;
+  storyProgressWrapperStyles?: CSSProperties;
+  storyProgressStyles?: CSSProperties;
   firstStory?: number;
   defaultInterval?: number;
   onAllStoriesEnd?: () => void;
@@ -26,6 +29,9 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
     firstStory,
     defaultInterval,
     storyContainerStyles,
+    storyProgressContainerStyles,
+    storyProgressWrapperStyles,
+    storyProgressStyles,
     onAllStoriesEnd,
     onStoryStart,
     onStoryEnd,
@@ -120,12 +126,12 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
           display: 'flex',
           justifyContent: 'center',
           maxWidth: '100%',
+          width: '100%',
           position: 'absolute',
-          width: '98%',
-          padding: 5,
-          paddingTop: 7,
+          paddingTop: '20px',
           alignSelf: 'center',
           zIndex: 99,
+          ...storyProgressContainerStyles,
         }}
       >
         {stories.map((_, i) => (
@@ -134,6 +140,8 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
             count={count}
             width={1 / stories.length}
             active={i === current ? 1 : i < current ? 2 : 0}
+            storyProgressWrapperStyles={storyProgressWrapperStyles}
+            storyProgressStyles={storyProgressStyles}
           />
         ))}
       </div>
