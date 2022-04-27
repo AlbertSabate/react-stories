@@ -106,7 +106,7 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
     if (firstStory) {
       setCurrent(firstStory);
     }
-  }, [initStories]);
+  }, [firstStory, initStories, setCurrent, setStories]);
 
   if (!currentStory) {
     return <></>;
@@ -136,7 +136,8 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
       >
         {stories.map((_, i) => (
           <Progress
-            key={`story-${i}`}
+            key={`progress-${i}`}
+            data-testid={`progress-${i}`}
             count={count}
             width={1 / stories.length}
             active={i === current ? 1 : i < current ? 2 : 0}
@@ -152,7 +153,7 @@ export function ReactStories(props: ReactStoriesProps): JSX.Element {
           ...(stories[current].styles || {}),
         }}
       >
-        <currentStory.content />
+        <currentStory.content data-testid={`content`} />
       </div>
     </div>
   );

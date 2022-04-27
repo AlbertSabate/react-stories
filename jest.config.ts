@@ -3,10 +3,13 @@ import type { Config } from '@jest/types';
 // Sync object
 const jestConfig: Config.InitialOptions = {
   preset: 'ts-jest',
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest/legacy',
+  },
+  testEnvironment: 'jsdom',
   roots: ['<rootDir>/src', '<rootDir>/test'],
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts', '!src/index.ts'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setupTests.ts'],
-  testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/**/*.{spec,test}.{js,jsx,ts,tsx}'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   modulePaths: [],
@@ -17,8 +20,6 @@ const jestConfig: Config.InitialOptions = {
       '<rootDir>/.jest/fileMocks.ts',
   },
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
-  automock: false,
-  resetMocks: false,
 };
 
 export default jestConfig;

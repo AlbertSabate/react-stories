@@ -1,4 +1,4 @@
-import { createContext, CSSProperties, FC, useState } from 'react';
+import { createContext, CSSProperties, FC, ReactNode, useState } from 'react';
 
 export interface Story {
   content: FC;
@@ -34,7 +34,7 @@ export const initialContext: StoriesState = {
 
 export const StoriesContext = createContext<StoriesState>(initialContext);
 
-export const StoriesProvider: FC = ({ children }) => {
+export const StoriesProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [count, setCount] = useState(initialContext.count);
   const [stories, setStories] = useState(initialContext.stories);
   const [current, setCurrent] = useState(initialContext.current);
